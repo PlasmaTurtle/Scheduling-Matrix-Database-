@@ -1,0 +1,10 @@
+COP1000,Principles of Programming,3,48
+COP2334,Introduction to C++ Programming,3,48
+COP2335,Advanced C++ Programming,3,48
+COP2360,Introduction to C# Programming,3,48
+COP2362,Advanced C# Programming,3,48
+COP2800,Introduction to Java Programming,3,48
+COP2805,Advanced Java Programming,3,48
+COP2822,Web Page Authoring,3,48
+COP2812,Introduction to XML,3,48
+COP2831,Web Programming,3,48
