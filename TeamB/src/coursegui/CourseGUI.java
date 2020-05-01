@@ -7,7 +7,7 @@ the cells within the CourseGUI and the TableModel to be updated).
 The “Insert” button should provide for entering data for all the fields in the table.                      [Complete]
 The “Delete” button will cause the selected row to be deleted from the TableModel.                         [Complete]
 Both “Insert” & “Delete” will cause the JTable to beredisplayed after the changes have been completed.     [Complete]
-The JavaDB database must also be updated with any changes that have been applied.
+The JavaDB database must also be updated with any changes that have been applied.                          [Complete]
  */
 package coursegui;
 
