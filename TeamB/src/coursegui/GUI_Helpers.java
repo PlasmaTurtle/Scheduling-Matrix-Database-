@@ -6,9 +6,13 @@
 package coursegui;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -27,6 +31,7 @@ public class GUI_Helpers implements SchedulingMatrixInterf_Test {
         courses = new ArrayList();
     }
     
+    @Override
     public ArrayList<String> getCourses() {
         
         String line;
@@ -48,8 +53,54 @@ public class GUI_Helpers implements SchedulingMatrixInterf_Test {
         return courses;
     }
     
-    public void updateCourses(String[] courses);
-    public void addCourses(String[] courses);
-    public void deleteCourses(String[] courses);
+    @Override
+    public void updateCourses(ArrayList<String> courses) {
+        
+        try {   
+            BufferedWriter writer = new BufferedWriter(new FileWriter("resources/Spring.txt"));
+            String updatedFile = "";
+
+            for (String course : courses) {
+                updatedFile += course + "\n";
+            }
+            writer.write(updatedFile);
+            writer.close();
+        } 
+        catch (IOException ex) {
+            Logger.getLogger(GUI_Helpers.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    @Override
+    public void addCourses(ArrayList<String> courses) {
+                try {   
+            BufferedWriter writer = new BufferedWriter(new FileWriter("resources/Spring.txt"));
+            String updatedFile = "";
+
+            for (String course : courses) {
+                updatedFile += course + "\n";
+            }
+            writer.write(updatedFile);
+            writer.close();
+        } 
+        catch (IOException ex) {
+            Logger.getLogger(GUI_Helpers.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    @Override
+    public void deleteCourses(ArrayList<String> courses) {
+        try {   
+            BufferedWriter writer = new BufferedWriter(new FileWriter("resources/Spring.txt"));
+            String updatedFile = "";
+
+            for (String course : courses) {
+                updatedFile += course + "\n";
+            }
+            writer.write(updatedFile);
+            writer.close();
+        } 
+        catch (IOException ex) {
+            Logger.getLogger(GUI_Helpers.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
     
 }

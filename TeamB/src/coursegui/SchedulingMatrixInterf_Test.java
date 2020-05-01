@@ -14,8 +14,8 @@ import java.util.ArrayList;
 public interface SchedulingMatrixInterf_Test {
     
     public ArrayList<String> getCourses();
-    public void updateCourses(String[] courses);
-    public void addCourses(String[] courses);
-    public void deleteCourses(String[] courses);
+    public void updateCourses(ArrayList<String> courses);
+    public void addCourses(ArrayList<String> courses);
+    public void deleteCourses(ArrayList<String> courses);
     
 }

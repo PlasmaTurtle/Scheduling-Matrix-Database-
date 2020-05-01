@@ -42,6 +42,7 @@ public class CourseGUI extends JFrame {
     public static void main(String[] args) {  
         // Initialize Helper Class
         GUI_Helpers helper = new GUI_Helpers();
+        ArrayList<String> courses;
 
         // GUI Objects
         JFrame courseGUI = new JFrame();
@@ -125,14 +126,32 @@ public class CourseGUI extends JFrame {
         courseGUI.add(btnDelete);
         courseGUI.add(btnUpdate);
         
-     // Event Handlers -------------------------------------
-        Object[] record = new Object[7];
+        // Populate Table Model   
+        courses = helper.getCourses();
+           
+        for (String line : courses) 
+        {
+           tableModel.addRow(line.split(",")); 
+        }
         
+     // Event Handlers -------------------------------------
+        Object[] record = new Object[4];
+
         // button add row
         btnInsert.addActionListener(new ActionListener(){
 
             @Override
             public void actionPerformed(java.awt.event.ActionEvent e) {
+                // Add to DB
+                String newRecord = "";
+                newRecord += fldCourseID.getText() + ",";
+                newRecord += fldCourseDescription.getText() + ",";
+                newRecord += fldCredits.getText() + ",";
+                newRecord += fldContactHours.getText();
+                courses.add(newRecord);
+                helper.deleteCourses(courses);
+                
+                // Add to GUI
                 record[0] = fldCourseID.getText();
                 record[1] = fldCourseDescription.getText();
                 record[2] = fldCredits.getText();
@@ -147,9 +166,15 @@ public class CourseGUI extends JFrame {
 
             @Override
             public void actionPerformed(java.awt.event.ActionEvent e) {
-            
+                
                 // i = the index of the selected row
                 int i = courseTable.getSelectedRow();
+                
+                // Delete from DB
+                courses.remove(i);
+                helper.deleteCourses(courses);
+                
+                // Delete from GUI
                 if(i >= 0){
                     // remove a row from jtable
                     tableModel.removeRow(i);
@@ -184,6 +209,17 @@ public class CourseGUI extends JFrame {
                 // i = the index of the selected row
                 int i = courseTable.getSelectedRow();
                 
+                //Update DB      
+                String update = "";
+                update += fldCourseID.getText() + ",";
+                update += fldCourseDescription.getText() + ",";
+                update += fldCredits.getText() + ",";
+                update += fldContactHours.getText();
+                courses.set(i, update);
+                helper.updateCourses(courses);
+                
+                
+                // Update GUI
                 if(i >= 0) 
                 {
                    tableModel.setValueAt(fldCourseID.getText(), i, 0);
@@ -196,16 +232,7 @@ public class CourseGUI extends JFrame {
                 }
             }
         });
-        
-        // Populate Table Model   
-        ArrayList<String> courses;
-        helper.getCourses();
-        courses = helper.getCourses();
-           
-        for (String line : courses) 
-        {
-           tableModel.addRow(line.split(",")); 
-        }
+       
         
         // Load Frame on Screen
         courseGUI.setLocationRelativeTo(null);
